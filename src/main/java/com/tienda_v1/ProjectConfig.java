@@ -38,4 +38,13 @@ public class ProjectConfig implements WebMvcConfigurer{
     public void addInterceptors(InterceptorRegistry registro){
         registro.addInterceptor(localeChangeInterceptor());
     }
+    
+    /*Poder accesar a los messages.properties */
+    @Bean("messageSource")
+    public MessageSource messageSource(){
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasenames("messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
 }
