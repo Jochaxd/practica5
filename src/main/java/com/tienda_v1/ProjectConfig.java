@@ -23,7 +23,6 @@ public class ProjectConfig implements WebMvcConfigurer{
     /* Los siguientes métodos son para incorporar el tema de internacionalización en el proyecto*/
     
     /* localeResolver se utiliza para crear una sesión de cambio de idioma */
-    
     @Bean
     public LocaleResolver localeResolver(){
         var slr = new SessionLocaleResolver();
@@ -55,12 +54,13 @@ public class ProjectConfig implements WebMvcConfigurer{
         return messageSource;
     }
     
-    /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */ @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/index").setViewName("index");
-        registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
+    /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */
+    @Override    
+    public void addViewControllers(ViewControllerRegistry registry) {        
+        registry.addViewController("/").setViewName("index");        
+        registry.addViewController("/index").setViewName("index");        
+        registry.addViewController("/login").setViewName("login");        
+        registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo"); 
     }
 
     @Bean
@@ -94,7 +94,7 @@ public class ProjectConfig implements WebMvcConfigurer{
         return http.build();
     }
 
-    /* El siguiente método se utiliza para completar la clase no es     realmente funcional, la próxima semana se reemplaza con usuarios de BD */
+    /* El siguiente método se utiliza para completar la clase no es realmente funcional, la próxima semana se reemplaza con usuarios de BD */
     @Bean
     public UserDetailsService users() {
         UserDetails admin = User.builder()
